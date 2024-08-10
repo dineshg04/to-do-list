@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <style>
+      .todo{
+        border: 3px solid;
+        border-radius: 5px;
+        border-color: bisque;
+        padding: 5px;
+      }
+      .dateyear{
+        border: 3px solid;
+        border-radius: 5px;
+        border-color: bisque;
+        padding: 5px;
+      }
+      .addbut{
+        padding: 5px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(89, 181, 89);
+        color: aliceblue;
+      }
+      .delbutton{
+        padding: 5px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(227, 52, 52);
+        color: aliceblue;
+
+      }
+
+    </style>
+</head>
+<body>
+    <p>To do list</p>
+    
+    <input placeholder="todo name" class="todo" >
+    <input type="date" class="dateyear">
+    <button onclick="
+    addlist();" class="addbut">ADD</button>
+    <div class="listname"></div>
+    
+
+
+    <script>
+        const array =[];
+       
+            
+       function addlist(){
+            let element = document.querySelector('.todo');
+            let elementvalue = element.value;
+            let dateoftodo = document.querySelector('.dateyear') ;
+                let datemonth = dateoftodo.value;
+        
+            array.push({ name : elementvalue,
+            date : datemonth});
+            element.value ='';
+            todolistview();
+            
+        }
+        function todolistview(){
+            if(array.length==0){
+              document.querySelector('.listname').innerHTML='<p><p>';
+            }
+        
+            let todoname ='';
+            for (let i =0; i<array.length; i++ ){
+                
+        
+                const todolist =array[i].name;
+                const duedate = array[i].date;
+                let html= `<p>
+                    ${todolist}   &nbsp  ${duedate}  &nbsp &nbsp
+                     <button class="delbutton" onclick="array.splice(${i},1);
+                     todolistview()";>Delete
+                    </button>  
+                     </p> `;
+                todoname += html;
+                document.querySelector('.listname').innerHTML=todoname;
+                
+            }
+        }
+        function dateyearmonth(){
+            
+        }
+        
+    
+
+    </script>
+
+    
+</body>
+</html>
